@@ -53,6 +53,14 @@ export const PROJECTS: Project[] = [
     image: "https://picsum.photos/seed/patient/600/400"
   },
   {
+    title: "Laptop Price Prediction",
+    description: "Built a machine learning model to predict laptop prices based on features like RAM, CPU, GPU, and weight. Achieved high accuracy using advanced regression techniques.",
+    tech: ["Python", "Scikit-learn", "Pandas", "Streamlit"],
+    github: "https://github.com/madan-genai",
+    live: "#",
+    image: "https://picsum.photos/seed/laptop/600/400"
+  },
+  {
     title: "Cold Email Generator",
     description: "An AI-powered tool that generates personalized cold emails based on prospect data and business offerings.",
     tech: ["Python", "NLP", "GPT-4", "Pandas"],
