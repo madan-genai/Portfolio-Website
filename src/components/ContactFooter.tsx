@@ -1,7 +1,8 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { PERSONAL_INFO } from '../constants';
-import { Mail, Github, Linkedin, Send, Download, Phone } from 'lucide-react';
+import { Mail, Github, Linkedin, Send, Download, Phone, Eye } from 'lucide-react';
+import ResumeView from './ResumeView';
 
 export default function Contact() {
   return (
@@ -98,7 +99,7 @@ export default function Contact() {
   );
 }
 
-export function ResumeSection() {
+export function ResumeSection({ onViewResume }: { onViewResume: () => void }) {
   return (
     <section className="py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,17 +114,18 @@ export function ResumeSection() {
             Ready to see my <span className="gradient-text">Full Resume?</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Download my detailed resume to learn more about my technical background, academic achievements, and the projects I've worked on.
+            View my detailed resume online or download it to learn more about my technical background and projects.
           </p>
-          <motion.a
-            href="/resume.pdf"
-            download="Madan_Lal_Resume.pdf"
-            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(16, 185, 129, 0.2)" }}
-            whileTap={{ scale: 0.95 }}
-            className="px-12 py-6 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white rounded-[2rem] font-black uppercase tracking-widest flex items-center gap-4 mx-auto hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-all shadow-2xl w-fit"
-          >
-            <Download className="w-7 h-7" /> Download Resume (PDF)
-          </motion.a>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <motion.button
+              onClick={onViewResume}
+              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(16, 185, 129, 0.2)" }}
+              whileTap={{ scale: 0.95 }}
+              className="px-12 py-6 bg-emerald-500 text-white rounded-[2rem] font-black uppercase tracking-widest flex items-center gap-4 hover:bg-emerald-600 transition-all shadow-2xl"
+            >
+              <Eye className="w-7 h-7" /> View & Save Resume
+            </motion.button>
+          </div>
         </motion.div>
       </div>
     </section>

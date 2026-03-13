@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { PERSONAL_INFO } from '../constants';
 import { ArrowRight, Download, Mail } from 'lucide-react';
 
-export default function Hero() {
+export default function Hero({ onViewResume }: { onViewResume: () => void }) {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
   const y2 = useTransform(scrollY, [0, 500], [0, -150]);
@@ -74,15 +74,14 @@ export default function Hero() {
               View Projects <ArrowRight className="w-5 h-5" />
             </motion.a>
             
-            <motion.a
-              href="/resume.pdf"
-              download="Madan_Lal_Resume.pdf"
+            <motion.button
+              onClick={onViewResume}
               whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
               whileTap={{ scale: 0.95 }}
               className="px-10 py-5 bg-white dark:bg-white/5 hover:bg-gray-50 dark:hover:bg-white/10 text-gray-900 dark:text-white border border-gray-200 dark:border-white/10 rounded-2xl font-bold flex items-center gap-2 transition-all"
             >
-              Download Resume <Download className="w-5 h-5" />
-            </motion.a>
+              View & Save Resume <Download className="w-5 h-5" />
+            </motion.button>
             
             <motion.a
               href="#contact"

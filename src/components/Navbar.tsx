@@ -3,7 +3,7 @@ import { Moon, Sun, Menu, X, Github, Linkedin } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
 import { PERSONAL_INFO } from '../constants';
 
-export default function Navbar() {
+export default function Navbar({ onViewResume }: { onViewResume: () => void }) {
   const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -93,6 +93,15 @@ export default function Navbar() {
                   </motion.a>
                 ))}
                 <motion.button
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  onClick={onViewResume}
+                  className="text-gray-700 dark:text-gray-300 hover:text-emerald-500 dark:hover:text-emerald-400 px-3 py-2 rounded-md text-sm font-medium transition-colors nav-link-underline"
+                >
+                  Resume
+                </motion.button>
+                <motion.button
                   whileHover={{ scale: 1.1, rotate: 15 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsDark(!isDark)}
@@ -139,6 +148,15 @@ export default function Navbar() {
                     {link.name}
                   </a>
                 ))}
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    onViewResume();
+                  }}
+                  className="text-gray-700 dark:text-gray-300 hover:text-primary block w-full text-left px-3 py-2 rounded-md text-base font-medium"
+                >
+                  Resume
+                </button>
               </div>
             </motion.div>
           )}
